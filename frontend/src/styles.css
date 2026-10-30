@@ -1,0 +1,55 @@
+:root {
+  --bg: #eceff3; --surface: #fff; --ink: #16202b; --muted: #5d6b7a; --line: #d7dde4;
+  --accent: #0f6b6b; --accent-ink: #fff; --mark: #f6e27a;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body { font-family: "IBM Plex Sans", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.app { display: grid; grid-template-columns: 300px 1fr; height: 100%; }
+aside { background: var(--surface); border-right: 1px solid var(--line); padding: 24px 20px; overflow-y: auto; }
+h1 { font: 600 28px "Source Serif 4", serif; margin: 0 0 4px; letter-spacing: -.01em; }
+.tag { color: var(--muted); font-size: 14px; margin: 0 0 20px; line-height: 1.4; }
+.upload { display: block; text-align: center; padding: 12px; background: var(--accent); color: var(--accent-ink); border-radius: 6px; font-weight: 500; cursor: pointer; }
+.upload input { display: none; }
+.upload:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.status { font-size: 13px; color: var(--accent); }
+.hint { font-size: 13px; color: var(--muted); margin: 20px 0 8px; }
+.docs { list-style: none; padding: 0; margin: 0; }
+.docs li { padding: 10px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; }
+.docs label { display: flex; gap: 8px; align-items: center; min-width: 0; }
+.fname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+.docs small { color: var(--muted); grid-column: 1; padding-left: 24px; }
+.del { grid-column: 2; grid-row: 1 / span 2; background: none; border: 0; color: var(--muted); font-size: 12px; }
+.del:hover { color: #b3261e; }
+.empty { color: var(--muted); font-size: 14px; display: block !important; }
+
+main { display: flex; flex-direction: column; min-width: 0; height: 100%; }
+.thread { flex: 1; overflow-y: auto; padding: 32px clamp(16px, 6vw, 72px); display: flex; flex-direction: column; gap: 18px; }
+.welcome { margin: auto; max-width: 460px; text-align: center; }
+.welcome h2 { font: 600 30px "Source Serif 4", serif; margin: 0 0 8px; }
+.welcome p { color: var(--muted); line-height: 1.5; }
+.msg { max-width: 720px; line-height: 1.6; }
+.msg.user { align-self: flex-end; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 14px 14px 2px 14px; }
+.msg.bot { background: var(--surface); border: 1px solid var(--line); padding: 18px 22px; border-radius: 2px 14px 14px 14px; }
+.muted { color: var(--muted); }
+.answer { font: 400 17px/1.65 "Source Serif 4", serif; margin: 0; white-space: pre-wrap; }
+.cite { font-size: 11px; font-weight: 600; background: var(--mark); border: 0; border-radius: 3px; padding: 1px 5px; margin: 0 2px; vertical-align: super; color: var(--ink); }
+.sources { list-style: none; margin: 16px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.src button { width: 100%; text-align: left; background: none; border: 0; padding: 9px 0; font-size: 14px; display: flex; gap: 8px; align-items: baseline; }
+.src b { background: var(--mark); border-radius: 3px; padding: 0 6px; font-size: 12px; }
+.score { margin-left: auto; color: var(--muted); font-size: 12px; }
+.src.open { background: #f6f8fa; margin: 0 -22px; padding: 0 22px; }
+blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--mark); color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+form { display: flex; gap: 10px; padding: 16px clamp(16px, 6vw, 72px) 24px; }
+form input { flex: 1; padding: 14px 16px; border: 1px solid var(--line); border-radius: 8px; font: inherit; background: var(--surface); }
+form button { padding: 0 26px; border: 0; border-radius: 8px; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+form button:disabled { opacity: .45; cursor: not-allowed; }
+
+@media (max-width: 760px) {
+  .app { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  aside { border-right: 0; border-bottom: 1px solid var(--line); max-height: 40vh; }
+}
